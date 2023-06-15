@@ -1,0 +1,25 @@
+<html>
+<head>    
+  <title>POGODA</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+  </head>
+<body>
+
+<form method="post" action="{{ url_for('message') }}">
+
+ <h1><label for="stacja">Wybierz miasto: </label></h1>
+  <select name="stacja">
+    {% for stacja in stations %}
+    <option value="{{stacja.id_stacji}}">{{stacja.stacja}}</option>
+    {% endfor %}
+  </select></p>
+  <br>
+  <input type="submit" value="Wybierz"><br>
+</form>
+
+{% if result %}
+<div class="result">{{ result }}</div>
+{% endif %}
+
+</body>
+</html>
